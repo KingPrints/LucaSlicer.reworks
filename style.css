@@ -1,0 +1,223 @@
+:root {
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --accent-color: #00ffcc;
+    --accent-color-dim: rgba(0, 255, 204, 0.2);
+    --secondary-color: #ff00ff;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+/* Background Effects */
+.stars, .twinkling {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.stars {
+    background: #000 url('https://www.transparenttextures.com/patterns/stardust.png') repeat top center;
+    z-index: -2;
+}
+.twinkling {
+    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat top center;
+    z-index: -1;
+    animation: move-twink-back 200s linear infinite;
+    opacity: 0.5;
+}
+@keyframes move-twink-back {
+    from {background-position: 0 0;}
+    to {background-position: -10000px 5000px;}
+}
+.container {
+    text-align: center;
+    z-index: 10;
+    padding: 3rem 2rem;
+    background: rgba(5, 5, 5, 0.7);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0, 255, 204, 0.05);
+    max-width: 800px;
+    width: 90%;
+    transform: translateY(-5%);
+}
+/* Glitch Effect for Title */
+.glitch-wrapper {
+    margin-bottom: 1rem;
+}
+.glitch {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+    color: var(--text-color);
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    z-index: 1;
+}
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #050505;
+}
+.glitch::before {
+    left: 3px;
+    text-shadow: -2px 0 var(--secondary-color);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+.glitch::after {
+    left: -3px;
+    text-shadow: -2px 0 var(--accent-color);
+    animation: glitch-anim2 3s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim {
+    0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
+    10% { clip-path: inset(50% 0 30% 0); transform: translate(2px, -1px); }
+    20% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, 2px); }
+    30% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -2px); }
+    40% { clip-path: inset(30% 0 20% 0); transform: translate(-2px, 1px); }
+    50% { clip-path: inset(70% 0 10% 0); transform: translate(2px, -1px); }
+    60% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); }
+    70% { clip-path: inset(90% 0 5% 0); transform: translate(2px, -2px); }
+    80% { clip-path: inset(15% 0 70% 0); transform: translate(-2px, 1px); }
+    90% { clip-path: inset(55% 0 25% 0); transform: translate(2px, -1px); }
+    100% { clip-path: inset(43% 0 43% 0); transform: translate(0); }
+}
+@keyframes glitch-anim2 {
+    0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
+    10% { clip-path: inset(30% 0 20% 0); transform: translate(-2px, 1px); }
+    20% { clip-path: inset(70% 0 10% 0); transform: translate(2px, -2px); }
+    30% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); }
+    40% { clip-path: inset(90% 0 5% 0); transform: translate(2px, -1px); }
+    50% { clip-path: inset(15% 0 70% 0); transform: translate(-2px, 1px); }
+    60% { clip-path: inset(55% 0 25% 0); transform: translate(2px, -2px); }
+    70% { clip-path: inset(43% 0 43% 0); transform: translate(-2px, 2px); }
+    80% { clip-path: inset(20% 0 80% 0); transform: translate(2px, -1px); }
+    90% { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 1px); }
+    100% { clip-path: inset(80% 0 5% 0); transform: translate(0); }
+}
+.subtitle {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+.coming-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 10px 20px;
+    border: 1px solid var(--accent-color-dim);
+    border-radius: 50px;
+    background: rgba(0, 255, 204, 0.05);
+    color: var(--accent-color);
+    margin-bottom: 3rem;
+}
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-color);
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 255, 204, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+}
+.contact-section {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+}
+.contact-section p {
+    color: #888;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: all 0.5s ease;
+}
+.contact-btn:hover {
+    border-color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+.contact-btn:hover::before {
+    left: 100%;
+}
+.contact-btn svg {
+    transition: stroke 0.3s ease;
+}
+.contact-btn:hover svg {
+    stroke: var(--accent-color);
+}
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #555;
+    font-size: 0.8rem;
+    z-index: 10;
+}
+@media (max-width: 768px) {
+    .glitch {
+        font-size: 2.5rem;
+    }
+    .subtitle {
+        font-size: 1rem;
+    }
+}
